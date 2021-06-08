@@ -68,7 +68,7 @@ void setup()
 void loop()
 {
     sensors();
-    //  action();
+    action();
     delay(2000);
 }
 
@@ -115,7 +115,7 @@ void sensors()
         if (humiditySensorValue <= humidityWantedValue)
         {
             activateByHumidity = 1;
-            //    Serial.println("Warning, the humidity is inferior than wanted, watering may enable !");
+            Serial.println("Warning, the humidity is inferior than wanted, watering may enable !");
         }
 
         lightSensorValue = analogRead(lightPin);
@@ -125,7 +125,7 @@ void sensors()
         if (lightSensorValue >= lightWantedValue)
         {
             activateByLight = 1;
-            //    Serial.println("Warning, the light is superior than wanted, watering may enable !");
+            Serial.println("Warning, the light is superior than wanted, watering may enable !");
         }
 
         waterSensorValue = digitalRead(waterPin);
@@ -134,10 +134,9 @@ void sensors()
         if (waterSensorValue <= waterWantedValue)
         {
             activateByWater = 1;
-            //    Serial.println("Warning, the ground humidity is inferior than wanted, watering may enable !");
+            Serial.println("Warning, the ground humidity is inferior than wanted, watering may enable !");
         }
 
-        //atmosSensorValue = getPressure();
         atmosSensorValue = bmp280.getPressure();
         Serial.print("Atmospheric pressure Value : ");
         Serial.print(atmosSensorValue);
@@ -145,7 +144,7 @@ void sensors()
         if (atmosSensorValue == atmosWantedValue)
         {
             activateByAtmos = 1;
-            //    Serial.println("Warning, the atmospheric pressure is equal than wanted, watering may enable !");
+            Serial.println("Warning, the atmospheric pressure is equal than wanted, watering may enable !");
         }
 
         tempSensorValue = bmp280.getTemperature();
@@ -155,7 +154,7 @@ void sensors()
         if (tempSensorValue >= tempWantedValue)
         {
             activateByAtmos = 1;
-            //    Serial.println("Warning, the temperature is superior than wanted, watering may enable !");
+            Serial.println("Warning, the temperature is superior than wanted, watering may enable !");
         }
 
         bluetoothSend();
