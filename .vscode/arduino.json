@@ -1,0 +1,6 @@
+{
+    "sketch": "main.ino",
+    "port": "COM4",
+    "board": "arduino:avr:uno",
+    "programmer": "arduino:avrispmkii"
+}
